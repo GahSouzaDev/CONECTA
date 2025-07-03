@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameChat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="room-controls" class="container">
+        <h1>GameChat</h1>
+        <input id="room-id" type="text" placeholder="Enter Room ID">
+        <button id="create-room">Create Room</button>
+        <button id="join-room">Join Room</button>
+    </div>
+    <div id="chat-container" class="container hidden">
+        <div id="voice-controls">
+            <h2>Voice Chat</h2>
+            <button id="mute-mic">Mute Mic</button>
+            <label>Volume:
+                <input id="volume-control" type="range" min="0" max="100" value="100">
+            </label>
+            <div id="user-list">
+                <h3>Users</h3>
+                <ul id="users"></ul>
+            </div>
+        </div>
+        <div id="text-chat">
+            <h2>Text Chat</h2>
+            <div id="messages"></div>
+            <input id="message-input" type="text" placeholder="Type a message...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

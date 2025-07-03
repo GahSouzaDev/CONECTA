@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceChat - Comunicação para Gamers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Tela de entrada -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-container">
+                <div class="logo">
+                    <i class="fas fa-headset"></i>
+                    <h1>VoiceChat</h1>
+                    <p>Comunicação simples para gamers</p>
+                </div>
+                
+                <div class="room-actions">
+                    <div class="action-card">
+                        <h3>Criar Nova Sala</h3>
+                        <p>Crie uma sala e convide seus amigos</p>
+                        <button id="create-room-btn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Criar Sala
+                        </button>
+                    </div>
+                    
+                    <div class="action-card">
+                        <h3>Entrar em Sala</h3>
+                        <p>Digite o ID da sala para se conectar</p>
+                        <div class="input-group">
+                            <input type="text" id="room-id-input" placeholder="ID da Sala" maxlength="6">
+                            <button id="join-room-btn" class="btn btn-secondary">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Entrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela principal do chat -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-container">
+                <!-- Sidebar esquerda -->
+                <div class="sidebar">
+                    <div class="room-info">
+                        <h3 id="current-room-name">Sala #<span id="room-id-display"></span></h3>
+                        <button id="copy-room-id" class="btn-icon" title="Copiar ID da Sala">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="users-section">
+                        <h4><i class="fas fa-users"></i> Usuários Online</h4>
+                        <div id="users-list" class="users-list">
+                            <!-- Lista de usuários será preenchida dinamicamente -->
+                        </div>
+                    </div>
+                    
+                    <div class="audio-controls">
+                        <button id="mute-btn" class="control-btn" title="Mutar/Desmutar">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button id="deafen-btn" class="control-btn" title="Ensurdecer/Ouvir">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <button id="settings-btn" class="control-btn" title="Configurações">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button id="leave-room-btn" class="control-btn leave" title="Sair da Sala">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Área principal do chat -->
+                <div class="main-content">
+                    <div class="chat-header">
+                        <h3><i class="fas fa-comments"></i> Chat de Texto</h3>
+                        <div class="connection-status">
+                            <span id="connection-indicator" class="status-indicator"></span>
+                            <span id="connection-text">Conectando...</span>
+                        </div>
+                    </div>
+                    
+                    <div id="messages-container" class="messages-container">
+                        <div class="welcome-message">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Bem-vindo ao chat! Você pode conversar por texto e voz com seus amigos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="message-input-container">
+                        <div class="input-wrapper">
+                            <input type="text" id="message-input" placeholder="Digite sua mensagem..." maxlength="500">
+                            <button id="send-message-btn" class="btn-send">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de configurações -->
+        <div id="settings-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Configurações de Áudio</h3>
+                    <button id="close-settings" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label for="mic-volume">Volume do Microfone</label>
+                        <input type="range" id="mic-volume" min="0" max="100" value="50">
+                        <span id="mic-volume-value">50%</span>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="speaker-volume">Volume dos Alto-falantes</label>
+                        <input type="range" id="speaker-volume" min="0" max="100" value="50">
+                        <span id="speaker-volume-value">50%</span>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="username">Seu Nome</label>
+                        <input type="text" id="username" placeholder="Digite seu nome" maxlength="20">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay de loading -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Conectando...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
